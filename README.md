@@ -1,5 +1,17 @@
 LABjs is a dynamic script loader
 
+LHS is the targer, and RHS is the source 
+
+the difference between function declarations, function expressions and block scope
+
+function declarations : function + name ()
+
+the function expressions: const name = function + name1 ()
+
+*always use name in function expression*
+
+lexical scope and dynamic scope
+
 - you can take a look that LABjs if you want to look at performance script loading
 
 - grips is a templating engine
