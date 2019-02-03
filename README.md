@@ -42,3 +42,5 @@ var foo = "bar" => may be single statement with declaration and init the value b
 JIT this stands for just in time compilation, the function here, we don't see it being called so rather than compiling the contents of that function, we will just skip over it and we will come back to it later, we will compile the function bar whenever we are forced to, so we will defer the compilation and we will compile it just in time
 
 - the compiler javascript make a best guess because it is not eought of time and so many of the engines will make a guess but they will instrument that initial guess
+
+the arrow function is not binding the argument and this keywork, otherwise the regular function will bind the argument and this keywork
