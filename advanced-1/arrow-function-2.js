@@ -13,10 +13,16 @@ const car = {
   },
   getSummary1: () => {
     return `the car is ${this.color}`; // this keyword won't work in this case
+  },
+  child: {
+    getSummary: () => {
+      return `the car is ${this.color}`;
+    }
   }
 };
 
 console.log(car.getSummary());
 console.log(car.getSummary1());
+console.log(car.child.getSummary());
 // those are the main differences between regular functions and arrow functions, arrow function do not bind arguments,
 // they don't bind to this and arrow functions come with that advanced shorthand systax

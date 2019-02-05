@@ -33,4 +33,4 @@ const me = new Person('Andrew', 'Mead', 27, ['Teching', 'biking']);
 me.setName('tien vu');
 console.log(me.getBio());
 const person2 = new Person('tien', 'vu', 40);
-console.log(person2.getBio()); 
+console.log(person2.getBio());
