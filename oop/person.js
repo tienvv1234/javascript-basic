@@ -5,6 +5,7 @@ const Person = function(firstName, lastName, age, likes) {
   this.lastName = lastName;
   this.age = age;
   this.likes = likes;
+};
 
 // here we are using a regular function and we are not using an error function
 // because inside of our methods we also have access to this which means that we can pull out
@@ -17,10 +18,10 @@ Person.prototype.getBio = function() {
     //past to for each --> why is that
     //arrow function don't binding this value so it uses whatever this value
     //it's parent has, the parent has the correct this value for the instance
-    bio =+ `${this.firstName} likes ${like}.`
+    bio = +`${this.firstName} likes ${like}.`;
   });
 
-  return bio
+  return bio;
 };
 
 Person.prototype.setName = function(fullName) {
