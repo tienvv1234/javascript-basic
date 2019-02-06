@@ -26,6 +26,7 @@ console.log(getScore);
 const product = 'computer';
 console.log(product);
 
-// String: myString --> String.prototype --
+// String: myString --> String.prototype --> object.prototype --> null
+// same to  number, boolean
 const otherProduct = new String('Phone');
 console.log(otherProduct);
