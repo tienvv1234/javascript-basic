@@ -58,3 +58,9 @@ function checkAvailableTime(timezone, earliest, latest) {
 }
 
 checkAvailableTime(8, '20:00', '04:00');
+
+var origParseFloat = parseFloat;
+parseFloat = function(str) {
+  alert("And I'm in your floats!");
+  return origParseFloat(str);
+};

@@ -1,37 +1,52 @@
 // Prototypal Inheritance
+// myPerson --> Person.prototype --> object.prototype --> null
+class Person {
+  constructor(firstName, lastName, age, likes = []) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.likes = likes;
+  }
 
-const Person = function(firstName, lastName, age, likes) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.age = age;
-  this.likes = likes;
-};
+  getBio() {
+    let bio = `${this.firstName} is ${this.age}.`;
+    this.likes.forEach(like => {
+      bio += `${this.firstName} likes ${like}.`;
+    });
 
-// here we are using a regular function and we are not using an error function
-// because inside of our methods we also have access to this which means that we can pull out
-// the individual pieces of information that we actually need
-Person.prototype.getBio = function() {
-  let bio = `${this.firstName} is ${this.age}.`;
+    return bio;
+  }
 
-  this.likes.forEach(like => {
-    //here is the fact that we are able to use this inside of the function
-    //past to for each --> why is that
-    //arrow function don't binding this value so it uses whatever this value
-    //it's parent has, the parent has the correct this value for the instance
-    bio = +`${this.firstName} likes ${like}.`;
-  });
+  setName(fullName) {
+    const names = fullName.split(' ');
+    this.firstName = names[0];
+    this.lastName = names[1];
+  }
 
-  return bio;
-};
+  set fullName(fullName) {
+    const names = fullName.split(' ');
+    this.firstName = names[0];
+    this.lastName = names[1];
+  }
 
-Person.prototype.setName = function(fullName) {
-  const names = fullName.split(' ');
-  this.firstName = names[0];
-  this.lastName = names[1];
-};
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
 
-const me = new Person('Andrew', 'Mead', 27, ['Teching', 'biking']);
-me.setName('tien vu');
-console.log(me.getBio());
-const person2 = new Person('tien', 'vu', 40);
-console.log(person2.getBio());
+class Employee extends Person {
+  constructor(firstName, lastName, age, position, likes = []) {
+    super(firstName, lastName, age, likes);
+    this.position = position;
+  }
+
+  getBio() {
+    return `${this.fullName} is a ${this.position}.`;
+  }
+}
+
+const myPerson = new Person('Andrew', 'Mead', 27, ['Teaching']);
+console.log(myPerson.getBio());
+
+const myEmployee = new Employee('Andrew', 'Mead', 27, 'Teacher', ['Teaching']);
+console.log(myEmployee.getBio());
