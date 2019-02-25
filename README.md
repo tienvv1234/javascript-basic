@@ -1,6 +1,6 @@
 LABjs is a dynamic script loader
 
-LHS is the targer, and RHS is the source 
+LHS is the targer, and RHS is the source
 
 the difference between function declarations, function expressions and block scope
 
@@ -8,7 +8,7 @@ function declarations : function + name ()
 
 the function expressions: const name = function + name1 ()
 
-*always use name in function expression*
+_always use name in function expression_
 
 lexical scope and dynamic scope
 
@@ -44,3 +44,5 @@ JIT this stands for just in time compilation, the function here, we don't see it
 - the compiler javascript make a best guess because it is not eought of time and so many of the engines will make a guess but they will instrument that initial guess
 
 the arrow function is not binding the argument and this keywork, otherwise the regular function will bind the argument and this keywork
+
+The difference between Object.create and the function constructor pattern is that Object.create builds an object that inherits directly from the one that we passed into the first argument, While, on the other hand, the function constructor the newly created object inherits from the constructor's prototype property
