@@ -24,37 +24,10 @@ function checkAvailableTime(timezone, earliest, latest) {
   const now = moment(new Date()).utcOffset(timezone * 60);
 
   if (timeDiff > 0) {
-    const timeDiffSinceEarliestPickupTime = moment(now.toDate()).diff(
-      earliestPickUpTime.toDate(),
-      'seconds'
-    );
-
-    console.log(
-      'timeDiffSinceEarliestPickupTime',
-      timeDiffSinceEarliestPickupTime
-    );
-
-    if (timeDiffSinceEarliestPickupTime < 0) {
-      earliestPickUpTime = moment(new Date())
-        .utcOffset(timezone * 60)
-        .subtract(1, 'days')
-        .set({
-          hours: hourLatest,
-          minute: minuteLatest
-        });
-      console.log('earliestPickUpTime2', earliestPickUpTime);
-    } else {
-      latestPickUpTime = moment(new Date())
-        .utcOffset(timezone * 60)
-        .add(1, 'days')
-        .set({
-          hours: hourLatest,
-          minute: minuteLatest
-        });
-      console.log('latestPickUpTime2', latestPickUpTime);
-    }
+   return now >= earliestPickUpTime || now <= latestPickUpTime
+  }else{
+    return now >= earliestPickUpTime && now <= latestPickUpTime
   }
-  return now.isBetween(earliestPickUpTime, latestPickUpTime);
 }
 
 checkAvailableTime(8, '20:00', '04:00');
