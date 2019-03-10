@@ -1,16 +1,16 @@
 //BUDGET controller
-var budgetController = (function () {
-  var Expense = function (id, description, value) {
+var budgetController = (function() {
+  var Expense = function(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
-  }
+  };
 
-  var Income = function (id, description, value) {
+  var Income = function(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
-  }
+  };
 
   var data = {
     allItems: {
@@ -21,19 +21,18 @@ var budgetController = (function () {
       exp: 0,
       inc: 0
     }
-  }
+  };
 
   return {
-    addItem: function (type, des, val) {
+    addItem: function(type, des, val) {
       var newItem, ID;
 
       // create new id
       if (data.allItems[type].length > 0) {
         ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
       } else {
-        ID = 0
+        ID = 0;
       }
-
 
       //create new item base on 'inc' and 'exp' type
       if (type === 'exp') {
@@ -47,39 +46,40 @@ var budgetController = (function () {
       // return the new item;
       return newItem;
     }
-  }
+  };
 })();
 
 // UI Controller
-var UIController = (function () {
-
+var UIController = (function() {
   var DOMstrings = {
     inputType: '.add__type',
     inputDescription: '.add__description',
     inputValue: '.add__value',
-    inputBtn: 'add__btn',
-    incomeContainer: 'income__list',
-    expensesContainer: 'expenses__list'
-  }
+    inputBtn: '.add__btn',
+    incomeContainer: '.income__list',
+    expensesContainer: '.expenses__list'
+  };
 
   return {
-    getInput: function () {
+    getInput: function() {
       return {
         type: document.querySelector(DOMstrings.inputType).value,
         description: document.querySelector(DOMstrings.inputDescription).value,
         value: document.querySelector(DOMstrings.inputValue).value
-      }
+      };
     },
 
-    addListItem: function (obj, type) {
+    addListItem: function(obj, type) {
       var html, newHtml, element;
       // create html string with placeholder text
       if (type === 'inc') {
         element = DOMstrings.incomeContainer;
-        html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">+%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+        html =
+          '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">+%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
       } else {
         element = DOMstrings.expensesContainer;
-        html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">- %value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+        html =
+          '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">- %value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
       }
       // replace the placeholder text with some actual data
       newHtml = html.replace('%id%', obj.id);
@@ -92,31 +92,35 @@ var UIController = (function () {
     clearFields: function() {
       var fields;
 
-      fields = document.querySelectorAll(DOMstrings.inputDescription + ", " + DOMStringList.inputValue);
+      fields = document.querySelectorAll(
+        DOMstrings.inputDescription + ', ' + DOMStringList.inputValue
+      );
+      console.log('fields', fields); // this will return list, using slice for convert list to slice
+      // one problem for that fields.slice will not work. because fields is not array
+      //
     },
 
-    getDOMstrings: function () {
+    getDOMstrings: function() {
       return DOMstrings;
     }
   };
 })();
 
 // GLOBAL controller
-var controller = (function (budgetCtrl, UICtrl) {
-
-  var setupEventListeners = function () {
+var controller = (function(budgetCtrl, UICtrl) {
+  var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem)
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
-    document.addEventListener('keypress', function (event) {
+    document.addEventListener('keypress', function(event) {
       if (event.keyCode === 13 || event.which === 13) {
         ctrlAddItem();
       }
-    })
-  }
+    });
+  };
 
-  var ctrlAddItem = function () {
+  var ctrlAddItem = function() {
     var input, newItem;
 
     //todo list
@@ -124,17 +128,23 @@ var controller = (function (budgetCtrl, UICtrl) {
     input = UIController.getInput();
 
     // 2. Add the item to budget controller
-    newItem = budgetController.addItem(input.type, input.description, input.value);
+    newItem = budgetController.addItem(
+      input.type,
+      input.description,
+      input.value
+    );
 
     // 3. Add the item to the UI
     UIController.addListItem(newItem, input.type);
-  }
+    UIController.clearFields();
+  };
 
   return {
-    init: function () {
-      console.log('Application has started')
+    init: function() {
+      console.log('Application has started');
       setupEventListeners();
     }
-  }
-
+  };
 })(budgetController, UIController);
+
+controller.init();
