@@ -1,0 +1,53 @@
+<htm>
+  <body>
+    <script>
+      // the promise is an object that keeps track about whether a certain event(asynchonous event)
+      // has happened already or not, and if it did happen then the promise
+      // determines what happens next
+
+      // const getIDs = new Promise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve([523, 883, 432, 974]);
+      //   }, 1500);
+      // });
+      // getIDs.then(IDs => {
+      //   console.log('IDs', IDs);
+      // });
+
+      // const getRecipe = recID => {
+      //   return new Promise((resolve, reject) => {
+      //     setTimeout(
+      //       ID => {
+      //         const recipe = {
+      //           title: 'Fresh tomato pasta',
+      //           publisher: 'jonas'
+      //         };
+      //         resolve(`${ID}: ${recipe.title}`);
+      //       },
+      //       1500,
+      //       recID
+      //     );
+      //   });
+      // };
+
+      // getIDs
+      //   .then(IDs => {
+      //     console.log(IDs);
+      //     return getRecipe(IDs[2]);
+      //   })
+      //   .then(recipe => {
+      //     console.log(recipe);
+      //   });
+
+      fetch(
+        'http://crossorigin.me/https://www.metaweather.com/api/location/2487956'
+      )
+        .then(result => {
+          console.log(result);
+        })
+        .catch(error => {
+          console.log('error');
+        });
+    </script>
+  </body>
+</htm>

@@ -1,0 +1,22 @@
+<htm>
+  <body>
+    <script>
+      const second = () => {
+        setTimeout(() => {
+          console.log('async hey there');
+        }, 2000);
+      };
+
+      const first = () => {
+        console.log('hey there');
+        second();
+        console.log('the end');
+      };
+
+      first();
+      //event loop
+      // execution stack, global execution context
+      // message queue
+    </script>
+  </body>
+</htm>
