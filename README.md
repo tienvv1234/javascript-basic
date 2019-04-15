@@ -71,3 +71,12 @@ babel-pollyfill this one will pollyfill all the code which were not in es 5 and 
 Fractional js
 // count =2.5 ---> 2 1/2
 // count =0.5 ---> 1/2
+
+#Forkify
+
+- implement button to delete all the shopping list items
+- implement functionality to manually add items to shopping list
+- save shopping list data in local storage
+- improve the ingredient parsing algorithm
+- come up with an algorithm for calculating the amount of servings
+- improve error handing
