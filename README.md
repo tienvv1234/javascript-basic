@@ -62,8 +62,12 @@ webpack loader this alows us to import or to load all kindle of different files.
 #BABEL
 
 npm install babel-core, this contains the core functionality of the compiler
-babel-preset-env this will take care, that all the moderm javascript feature are convert back to es5 
-babel-loader this one need for webpack in order to actually load babel files 
-babel-pollyfill this one will pollyfill all the code which were not in es 5 and need to add some code to webpack config file into entry point 
+babel-preset-env this will take care, that all the moderm javascript feature are convert back to es5
+babel-loader this one need for webpack in order to actually load babel files
+babel-pollyfill this one will pollyfill all the code which were not in es 5 and need to add some code to webpack config file into entry point
 
 #ES6 Modules
+
+Fractional js
+// count =2.5 ---> 2 1/2
+// count =0.5 ---> 1/2

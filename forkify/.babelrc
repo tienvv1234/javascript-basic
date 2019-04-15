@@ -1,22 +1,19 @@
 {
-    // presets here is a collection of code transform plug-in which are like the pieces of code that actually apply
-    // the actual transformations to our code 
-    // so now we can convert es6,7,8 next... to es 5, but there are some things that we cannot really convert  
-    // because the simple were not present in the es 5 version of language, and so there is no way that we can simple convert them
-    // back from es6 to es 5. And so these need to be pollyfilled and this like promises or method like array.from so stuff
-    // that just were not present in es5 and so we can not convert them back and so we need to pollyfill them which basically
-    // adds this code to our code, so to pollyfill them we need to install package babel-pollyfill
-    "presets": [
-        [
-            "env",
-            {
-                "targers": {
-                    "browser": [
-                        "last 5 versions",
-                        "ie >= 8"
-                    ]
-                }
-            }
-        ]
+  // presets here is a collection of code transform plug-in which are like the pieces of code that actually apply
+  // the actual transformations to our code
+  // so now we can convert es6,7,8 next... to es 5, but there are some things that we cannot really convert
+  // because the simple were not present in the es 5 version of language, and so there is no way that we can simple convert them
+  // back from es6 to es 5. And so these need to be pollyfilled and this like promises or method like array.from so stuff
+  // that just were not present in es5 and so we can not convert them back and so we need to pollyfill them which basically
+  // adds this code to our code, so to pollyfill them we need to install package babel-pollyfill
+  "presets": [
+    [
+      "env",
+      {
+        "targers": {
+          "browser": ["last 5 versions", "ie >= 8"]
+        }
+      }
     ]
+  ]
 }

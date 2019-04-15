@@ -217,7 +217,6 @@ var UIController = (function() {
 
     deleteListItem: function(selectorId) {
       var element;
-      debugger;
       element = document.getElementById(selectorId);
       element.parentNode.removeChild(element);
     },
