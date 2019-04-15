@@ -8,10 +8,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/bundle.js'
   },
-  mode: 'development', // for develop
+  // mode: 'development', // for develop
   devServer: {
     contentBase: './dist/' // here we will specify the folder from which webpack should serve our files
   },
+  stats: { children: false }, // for get rid of `Entrypoint undefined = index.html using HtmlWebpackPlugin`
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
